@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quickshine Dry Cleaners - Premium Dry Cleaning & Care</title>
+    <meta name="description" content="Quickshine Dry Cleaners offers premium, eco-friendly dry cleaning, wash & iron, and specialty care for carpets, quilts, and more. Schedule a pickup today.">
+
+    <!-- Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons --><script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <!-- Animate on Scroll (AOS) - Latest Links --><link href="https://unpkg.com/aos@latest/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@latest/dist/aos.js"></script>
+
+    <!-- Google Fonts: Inter (Sans) & Playfair Display (Serif) --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Custom Tailwind Config & Styles --><script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'paper': '#FAF7F3', // Light text
+                        'primary': '#272640', // Darkest bg (for footer)
+                        'accent': '#006466', // Brightest teal
+                        'gold': '#C6A34C', // Stars
+                        'bg-dark': '#212F45', // Main dark bg
+                        'bg-dark-section': '#1B3A4B', // Lighter dark for sections
+                        'bg-dark-card': '#144552', // Even lighter for cards
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'serif': ['"Playfair Display"', 'serif'],
+                    },
+                    borderRadius: {
+                        'large': '12px',
+                        'xlarge': '16px',
+                    },
+                    boxShadow: {
+                        'subtle': '0 4px 12px rgba(0, 0, 0, 0.1)',
+                        'hover': '0 8px 20px rgba(0, 0, 0, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Internal Styles --><style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #212F45; /* 'bg-dark' */
+            /* Subtle diagonal fabric texture */
+            background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'8'%20height%3D'8'%3E%3Cpath%20d%3D'M-1%201l2-2M0%208l8-8M7%209l2-2'%20stroke%3D'%231B3A4B'%20stroke-width%3D'1'%2F%3E%3C%2Fsvg%3E");
+            background-attachment: fixed; /* Makes the background stay still */
+        }
+        
+        /* Sticky header with backdrop blur */
+        .sticky-header {
+            transition: background-color 0.3s ease-out, box-shadow 0.3s ease-out;
+            top: 0;
+            z-index: 40;
+        }
+
+        .sticky-header.scrolled {
+            background-color: rgba(33, 47, 69, 0.85); /* 'bg-dark' with opacity */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Testimonial Carousel Transitions */
+        .testimonial-item {
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+        }
+        .testimonial-item.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        /* Calendar Styles */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            text-align: center;
+        }
+        .time-slot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        /* About Us Image Carousel Styles */
+        .about-carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .about-carousel-slide {
+            flex: 0 0 100%;
+            min-width: 0;
+        }
+        .about-carousel-dot.active {
+            background-color: #006466; /* accent */
+            transform: scale(1.25);
+        }
+
+    </style>
+</head>
+
+<body class="font-sans text-paper antialiased">
+
+    <!-- Page Wrapper --><div class="flex flex-col min-h-screen">
+
+        <!-- ===== HEADER ===== --><header id="main-header" class="sticky-header w-full">
+            <nav class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+                <!-- Logo --><a href="#" class="font-serif text-2xl font-bold text-paper nav-link" data-page="home" aria-label="Quickshine Dry Cleaners Home">
+                    Quickshine Dry Cleaners
+                </a>
+
+                <!-- Mobile Nav Toggle --><button id="mobile-nav-toggle" class="md:hidden p-2 rounded-large text-paper" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav-menu">
+                    <i data-lucide="menu"></i>
+                </button>
+
+                <!-- Desktop Nav --><div class="hidden md:flex items-center space-x-6">
+                    <a href="#" class="text-paper hover:text-accent transition-colors duration-150 nav-link" data-page="home">Home</a>
+                    <a href="#services" class="text-paper hover:text-accent transition-colors duration-150 nav-link-internal">Services</a>
+                    <a href="#about" class="text-paper hover:text-accent transition-colors duration-150 nav-link-internal">About</a>
+                    <a href="#testimonials" class="text-paper hover:text-accent transition-colors duration-150 nav-link-internal">Testimonials</a>
+                    <a href="#" class="text-paper hover:text-accent transition-colors duration-150 nav-link" data-page="booking">Contact / Location</a>
+                    <a href="#" class="bg-accent text-white px-5 py-3 rounded-large text-sm font-medium shadow-subtle hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200 ease-out nav-link" data-page="booking">
+                        Book Pickup
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Mobile Nav Menu --><div id="mobile-nav-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-bg-dark-card shadow-lg" role="menu">
+                <div class="flex flex-col space-y-4 p-5">
+                    <a href="#" class="text-paper block px-3 py-2 rounded-large hover:bg-bg-dark-section nav-link" data-page="home" role="menuitem">Home</a>
+                    <a href="#services" class="text-paper block px-3 py-2 rounded-large hover:bg-bg-dark-section nav-link-internal" role="menuitem">Services</a>
+                    <a href="#about" class="text-paper block px-3 py-2 rounded-large hover:bg-bg-dark-section nav-link-internal" role="menuitem">About</a>
+                    <a href="#testimonials" class="text-paper block px-3 py-2 rounded-large hover:bg-bg-dark-section nav-link-internal" role="menuitem">Testimonials</a>
+                    <a href="#" class="text-paper block px-3 py-2 rounded-large hover:bg-bg-dark-section nav-link" data-page="booking" role="menuitem">Contact / Location</a>
+                    <a href="#" class="bg-accent text-white w-full text-center px-5 py-3 rounded-large font-medium shadow-subtle nav-link" data-page="booking" role="menuitem">
+                        Book Pickup
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== MAIN CONTENT ===== --><main class="flex-grow overflow-x-hidden"> <!-- Added overflow-x-hidden to prevent horizontal scrollbars from animations --><!-- ===== PAGE 1: HOME ===== --><div id="home-page">
+                <!-- Hero Section --><section class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-center">
+                    <h1 class="font-serif text-5xl md:text-7xl font-bold text-paper" data-aos="fade-up">
+                        Premium Dry Cleaning & Care
+                    </h1>
+                    <p class="mt-6 text-lg md:text-xl text-paper max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                        Expert, eco-friendly care for your finest garments. From dry cleaning and wash & iron to specialty items like sofas, curtains, bridal wear, carpets, and quilts.
+                    </p>
+                    <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+                        <a href="#" class="bg-accent text-white px-8 py-4 rounded-large text-lg font-medium shadow-subtle hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200 ease-out nav-link" data-page="booking">
+                            Book Pickup
+                        </a>
+                        <a href="#services" class="bg-transparent border border-gray-600 text-paper px-8 py-4 rounded-large text-lg font-medium hover:bg-bg-dark-section hover:border-gray-500 transition-all duration-200 ease-out nav-link-internal">
+                            View Services
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Services Section --><section id="services" class="bg-bg-dark-section py-24 md:py-32">
+                    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-paper text-center" data-aos="fade-up">Our Services</h2>
+                        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <!-- Service Card 1 --><div class="bg-bg-dark-card rounded-xlarge shadow-subtle p-8 text-center flex flex-col" data-aos="fade-up">
+                                <i data-lucide="shirt" class="w-12 h-12 text-accent mx-auto"></i>
+                                <h3 class="font-serif text-2xl font-bold mt-6 text-paper">Dry Cleaning</h3>
+                                <p class="mt-3 text-paper/80 flex-grow">Eco-friendly cleaning for suits, dresses, coats, and delicate fabrics. Pristine results, every time.</p>
+                                <p class="mt-4 text-sm text-paper/60 font-medium">From $8.00</p>
+                                <a href="#" class="mt-6 font-medium text-accent hover:text-accent/80 transition-colors nav-link" data-page="booking">Learn more &raquo;</a>
+                            </div>
+                            <!-- Service Card 2 --><div class="bg-bg-dark-card rounded-xlarge shadow-subtle p-8 text-center flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                                <i data-lucide="washing-machine" class="w-12 h-12 text-accent mx-auto"></i>
+                                <h3 class="font-serif text-2xl font-bold mt-6 text-paper">Wash & Iron</h3>
+                                <p class="mt-3 text-paper/80 flex-grow">Your everyday laundry, perfectly washed, pressed, and returned. A simple luxury to save you time.</p>
+                                <p class="mt-4 text-sm text-paper/60 font-medium">From $2.50 / lb</p>
+                                <a href="#" class="mt-6 font-medium text-accent hover:text-accent/80 transition-colors nav-link" data-page="booking">Learn more &raquo;</a>
+                            </div>
+                            <!-- Service Card 3 --><div class="bg-bg-dark-card rounded-xlarge shadow-subtle p-8 text-center flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                                <i data-lucide="align-horizontal-distribute-center" class="w-12 h-12 text-accent mx-auto -rotate-45"></i>
+                                <h3 class="font-serif text-2xl font-bold mt-6 text-paper">Carpets & Rugs</h3>
+                                <p class="mt-3 text-paper/80 flex-grow">Deep cleaning for area rugs and carpets, removing stains and allergens to refresh your home.</p>
+                                <p class="mt-4 text-sm text-paper/60 font-medium">From $3.00 / sq ft</p>
+                                <a href="#" class="mt-6 font-medium text-accent hover:text-accent/80 transition-colors nav-link" data-page="booking">Learn more &raquo;</a>
+                            </div>
+                            <!-- Service Card 4 --><div class="bg-bg-dark-card rounded-xlarge shadow-subtle p-8 text-center flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                                <i data-lucide="bed-double" class="w-12 h-12 text-accent mx-auto"></i>
+                                <h3 class="font-serif text-2xl font-bold mt-6 text-paper">Blankets & Quilts</h3>
+                                <p class="mt-3 text-paper/80 flex-grow">Gentle, thorough cleaning for comforters, quilts, and heavy blankets. Returned fresh and cozy.</p>
+                                <p class="mt-4 text-sm text-paper/60 font-medium">From $25.00</p>
+                                <a href="#" class="mt-6 font-medium text-accent hover:text-accent/80 transition-colors nav-link" data-page="booking">Learn more &raquo;</a>
+                            </div>
+                            <!-- Service Card 5 --><div class="bg-bg-dark-card rounded-xlarge shadow-subtle p-8 text-center flex flex-col" data-aos="fade-up" data-aos-delay="0"> <!-- Reset delay for new row --><i data-lucide="armchair" class="w-12 h-12 text-accent mx-auto"></i>
+                                <h3 class="font-serif text-2xl font-bold mt-6 text-paper">Sofa Cleaning</h3>
+                                <p class="mt-3 text-paper/80 flex-grow">Professional deep cleaning for sofas and upholstery, removing stains and refreshing your furniture.</p>
+                                <p class="mt-4 text-sm text-paper/60 font-medium">From $49.00</p>
+                                <a href="#" class="mt-6 font-medium text-accent hover:text-accent/80 transition-colors nav-link" data-page="booking">Learn more &raquo;</a>
+                            </div>
+                            <!-- Service Card 6 --><div class="bg-bg-dark-card rounded-xlarge shadow-subtle p-8 text-center flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                                <i data-lucide="scroll" class="w-12 h-12 text-accent mx-auto"></i>
+                                <h3 class="font-serif text-2xl font-bold mt-6 text-paper">Curtain Cleaning</h3>
+                                <p class="mt-3 text-paper/80 flex-grow">Gentle cleaning for all types of curtains and drapes, removing dust and allergens. Takedown & re-hang available.</p>
+                                <p class="mt-4 text-sm text-paper/60 font-medium">From $15.00 / panel</p>
+                                <a href="#" class="mt-6 font-medium text-accent hover:text-accent/80 transition-colors nav-link" data-page="booking">Learn more &raquo;</a>
+                            </div>
+                            <!-- Service Card 7 --><div class="bg-bg-dark-card rounded-xlarge shadow-subtle p-8 text-center flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                                <i data-lucide="gem" class="w-12 h-12 text-accent mx-auto"></i>
+                                <h3 class="font-serif text-2xl font-bold mt-6 text-paper">Bridal Wear</h3>
+                                <p class="mt-3 text-paper/80 flex-grow">Specialist cleaning and preservation for wedding gowns and formal wear. Cherish your memories.</p>
+                                <p class="mt-4 text-sm text-paper/60 font-medium">Quote on request</p>
+                                <a href="#" class="mt-6 font-medium text-accent hover:text-accent/80 transition-colors nav-link" data-page="booking">Learn more &raquo;</a>
+                            </div>
+                            <!-- Empty placeholder for alignment if needed, or another service --><div class="hidden lg:block" data-aos="fade-up" data-aos-delay="300">
+                                <!-- This can be an ad, a "more services" card, or just empty for alignment --></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- How it Works Section --><section class="py-24 md:py-32">
+                    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-paper text-center" data-aos="fade-up">How It Works</h2>
+                        <p class="mt-4 text-lg text-paper/80 max-w-2xl mx-auto text-center" data-aos="fade-up" data-aos-delay="100">
+                            Effortless care in three simple steps.
+                        </p>
+                        <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                            <!-- Step 1 --><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+                                <div class="bg-accent/10 rounded-full p-6">
+                                    <i data-lucide="calendar-check" class="w-16 h-16 text-accent"></i>
+                                </div>
+                                <h3 class="font-serif text-2xl font-bold mt-6 text-paper">1. Schedule Pickup</h3>
+                                <p class="mt-3 text-paper/80 max-w-xs">Use our form to book a convenient time for us to collect your items right from your doorstep.</p>
+                            </div>
+                            <!-- Step 2 --><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
+                                <div class="bg-accent/10 rounded-full p-6">
+                                    <i data-lucide="sparkles" class="w-16 h-16 text-accent"></i>
+                                </div>
+                                <h3 class="font-serif text-2xl font-bold mt-6 text-paper">2. We Clean & Care</h3>
+                                <p class="mt-3 text-paper/80 max-w-xs">Our experts use eco-friendly methods to meticulously clean, press, and care for your garments.</p>
+                            </div>
+                            <!-- Step 3 --><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="400">
+                                <div class="bg-accent/10 rounded-full p-6">
+                                    <i data-lucide="package-check" class="w-16 h-16 text-accent"></i>
+                                </div>
+                                <h3 class="font-serif text-2xl font-bold mt-6 text-paper">3. Perfect Delivery</h3>
+                                <p class="mt-3 text-paper/80 max-w-xs">We deliver your fresh, beautifully finished items back to you, ready to wear and enjoy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- About Us Section --><section id="about" class="bg-bg-dark-section py-24 md:py-32">
+                    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                            
+                            <!-- Image Column -> Replaced with Carousel --><div id="about-carousel" class="relative w-full h-[600px] md:h-[585px] rounded-xlarge border-2 border-gray-600 shadow-md overflow-hidden" data-aos="fade-right">
+                                <div class="about-carousel-track h-full">
+                                    <!-- Slide 1 --><div class="about-carousel-slide h-full">
+                                        <img src="Nov 2, 2025, 01_48_22 AM.png" alt="Professional ironing service" class="w-full h-full object-cover">
+                                    </div>
+                                    <!-- Slide 2 --><div class="about-carousel-slide h-full">
+                                        <img src="ChatGPT Image Nov 2, 2025, 03_03_31 PM.png" alt="Row of modern washing machines" class="w-full h-full object-cover">
+                                    </div>
+                                    <!-- Slide 3 --><div class="about-carousel-slide h-full">
+                                        <img src="ChatGPT Image Nov 2, 2025, 03_03_28 PM.png" alt="Neatly folded stack of clean clothes" class="w-full h-full object-cover">
+                                    </div>
+                                    <!-- Slide 4: FIXED BROKEN LINK --><div class="about-carousel-slide h-full">
+                                        <img src="ChatGPT Image Nov 2, 2025, 03_03_16 PM.png" alt="Clean garments on a clothing rack" class="w-full h-full object-cover">
+                                    </div>
+                                    <!-- Slide 5: FIXED BROKEN LINK --><div class="about-carousel-slide h-full">
+                                        <img src="ChatGPT Image Nov 2, 2025, 03_03_45 PM.png" alt="Steaming a suit for a perfect finish" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                
+                                <!-- Carousel Controls --><button id="about-prev" class="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-black/30 rounded-full text-white hover:bg-black/50 transition-colors" aria-label="Previous image">
+                                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                                </button>
+                                <button id="about-next" class="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-black/30 rounded-full text-white hover:bg-black/50 transition-colors" aria-label="Next image">
+                                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                                </button>
+
+                                <!-- Carousel Dots --><div id="about-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex space-x-2">
+                                    <!-- Dots will be injected by JS -->
+                                </div>
+                            </div>
+
+                            <!-- Text Content Column --><div data-aos="fade-left" data-aos-delay="100">
+                                <h2 class="font-serif text-4xl md:text-5xl font-bold text-paper">About Us</h2>
+                                <h3 class="font-serif text-2xl font-semibold text-accent mt-6">Quick Shine Drycleaners</h3>
+                                <p class="mt-4 text-lg text-paper/80">
+                                    At Quick Shine Drycleaners, we're not just a laundry service; we are your dedicated partners in preserving the life and vibrancy of your cherished garments. With a passion for perfection and a commitment to quality, we have become a trusted name in the world of fabric care.
+                                </p>
+                                <h3 class="font-serif text-2xl font-semibold text-accent mt-8">Our Mission</h3>
+                                <p class="mt-4 text-lg text-paper/80">
+                                    Our mission is simple: to provide you with the highest quality dry cleaning and laundry services while making your life easier. We understand that your clothes are an investment, and we treat them with the utmost care and respect. From everyday wear to delicate designer pieces, we handle each item as if it were our own.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Testimonials Section --><section id="testimonials" class="py-24 md:py-32">
+                    <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-paper" data-aos="fade-up">What Our Customers Say</h2>
+                        <div id="testimonial-carousel" class="mt-16 relative min-h-[250px] overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                            <!-- Testimonial 1 --><div class="testimonial-item absolute top-0 left-0 w-full opacity-100">
+                                <div class="flex justify-center text-gold mb-4">
+                                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                    <i data-lucide="star" class="w-5 h-5 fill-current ml-1"></i>
+                                    <i data-lucide="star" class="w-5 h-5 fill-current ml-1"></i>
+                                    <i data-lucide="star" class="w-5 h-5 fill-current ml-1"></i>
+                                    <i data-lucide="star" class="w-5 h-5 fill-current ml-1"></i>
+                                </div>
+                                <blockquote class="text-xl md:text-2xl text-paper/90 italic max-w-3xl mx-auto">
+                                    "Quickshine is the only place I trust with my suits. They come back perfect every single time. The pickup and delivery service is a lifesaver."
+                                </blockquote>
+                                <div class="mt-6 flex items-center justify-center">
+                                    <img src="https://placehold.co/64x64/E2E8F0/4A5568?text=JS" alt="John S." class="w-14 h-14 rounded-full" />
+                                    <p class="ml-4 font-medium text-paper">John S.</p>
+                                </div>
+                            </div>
+                            <!-- Testimonial 2 --><div class="testimonial-item hidden absolute top-0 left-0 w-full">
+                                <div class="flex justify-center text-gold mb-4">
+                                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                    <i data-lucide="star" class="w-5 h-5 fill-current ml-1"></i>
+                                    <i data-lucide="star" class="w-5 h-5 fill-current ml-1"></i>
+                                    <i data-lucide="star" class="w-5 h-5 fill-current ml-1"></i>
+                                    <i data-lucide="star" class="w-5 h-5 fill-current ml-1"></i>
+                                </div>
+                                <blockquote class="text-xl md:text-2xl text-paper/90 italic max-w-3xl mx-auto">
+                                    "They managed to get a red wine stain out of my favorite white silk blouse. I thought it was ruined! Absolutely magic. Highly recommend."
+                                </blockquote>
+                                <div class="mt-6 flex items-center justify-center">
+                                    <img src="https://placehold.co/64x64/E2E8F0/4A5568?text=MA" alt="Maria A." class="w-14 h-14 rounded-full" />
+                                    <p class="ml-4 font-medium text-paper">Maria A.</p>
+                                </div>
+                            </div>
+                            <!-- Testimonial 3 --><div class="testimonial-item hidden absolute top-0 left-0 w-full">
+                                <div class="flex justify-center text-gold mb-4">
+                                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                    <i data-lucide="star" class="w-5 h-5 fill-current ml-1"></i>
+                                    <i data-lucide="star" class="w-5 h-5 fill-current ml-1"></i>
+                                    <i data-lucide="star" class="w-5 h-5 fill-current ml-1"></i>
+                                    <i data-lucide="star-half" class="w-5 h-5 fill-current ml-1"></i>
+                                </div>
+                                <blockquote class="text-xl md:text-2xl text-paper/90 italic max-w-3xl mx-auto">
+                                    "We use their wash & iron service weekly. Our clothes always come back fresh, neatly folded, and on time. So much better than other services we've tried."
+                                </blockquote>
+                                <div class="mt-6 flex items-center justify-center">
+                                    <img src="https://placehold.co/64x64/E2E8F0/4A5568?text=DB" alt="David B." class="w-14 h-14 rounded-full" />
+                                    <p class="ml-4 font-medium text-paper">David B.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Trust Strip --><section class="bg-accent/10 py-12"> <!-- Used accent/10 for a subtle teal bg --><div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                            <div class="flex flex-col items-center" data-aos="fade-up">
+                                <i data-lucide="leaf" class="w-10 h-10 text-accent"></i>
+                                <p class="mt-3 font-medium text-paper">Eco-Friendly Solvents</p>
+                            </div>
+                            <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+                                <i data-lucide="fast-forward" class="w-10 h-10 text-accent"></i>
+                                <p class="mt-3 font-medium text-paper">Same-Week Turnaround</p>
+                            </div>
+                            <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+                                <i data-lucide="truck" class="w-10 h-10 text-accent"></i>
+                                <p class="mt-3 font-medium text-paper">Pickup & Delivery</p>
+                            </div>
+                            <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
+                                <i data-lucide="target" class="w-10 h-10 text-accent"></i>
+                                <p class="mt-3 font-medium text-paper">Stain Removal Experts</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Callout / Map --><section class="py-24 md:py-32">
+                    <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+                        <div class="bg-bg-dark-card rounded-xlarge shadow-subtle p-8 md:p-12 flex flex-col md:flex-row items-center gap-8" data-aos="fade-in" data-aos-duration="800">
+                            <div class="flex-shrink-0">
+                                <a href="#" class="nav-link" data-page="booking" aria-label="View our location">
+                                    <img src="https://placehold.co/200x200/144552/FAF7F3?text=Map+Preview" alt="Map preview of our shop location" class="w-48 h-48 md:w-40 md:h-40 rounded-large object-cover border-4 border-paper/10 shadow-md">
+                                </a>
+                            </div>
+                            <div class="flex-grow text-center md:text-left">
+                                <h2 class="font-serif text-3xl md:text-4xl font-bold text-paper">Want to drop items at our shop?</h2>
+                                <p class="mt-4 text-lg text-paper/80">
+                                    We'd love to see you! Our shop is conveniently located in Sunny Enclave, Kharar. Find our hours and full map on our contact page.
+                                </p>
+                                <div class="mt-8">
+                                    <a href="#" class="bg-accent text-white px-8 py-4 rounded-large text-lg font-medium shadow-subtle hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200 ease-out nav-link" data-page="booking">
+                                        View Location & Hours
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ===== PAGE 2: BOOKING / CONTACT ===== --><div id="booking-page" class="hidden">
+                <section class="py-24 md:py-32">
+                    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <h1 class="font-serif text-5xl md:text-6xl font-bold text-paper text-center" data-aos="fade-up">
+                            Book a Pickup or Find Us
+                        </h1>
+                        <p class="mt-4 text-lg text-paper/80 max-w-3xl mx-auto text-center" data-aos="fade-up" data-aos-delay="100">
+                            Schedule a convenient pickup and delivery, or find our shop location and hours to drop off your items in person.
+                        </p>
+
+                        <!-- Form/Map Grid --><div class="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+                            <!-- Left Column: Booking Form --><form id="booking-form" class="lg:col-span-2 space-y-6 bg-bg-dark-section p-8 md:p-10 rounded-xlarge shadow-subtle" data-aos="fade-right" novalidate>
+                                <h2 class="font-serif text-3xl font-bold text-paper" data-aos="fade-up" data-aos-delay="100">Schedule Your Pickup</h2>
+                                
+                                <!-- Success Message --><div id="form-success" role="alert" class="hidden p-4 bg-green-900 border border-green-700 text-paper rounded-large">
+                                    <strong class="font-bold">Booking requested!</strong> We've received your request and will contact you shortly to confirm.
+                                    For immediate assistance, call us at 077101 07090.
+                                </div>
+                                
+                                <!-- Error Message --><div id="form-error" role="alert" class="hidden p-4 bg-red-900 border border-red-700 text-paper rounded-large">
+                                    <strong class="font-bold">Error:</strong> Please correct the errors below and try again.
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="150">
+                                    <!-- Full Name --><div>
+                                        <label for="name" class="block text-sm font-medium text-paper">Full Name</label>
+                                        <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-3 bg-bg-dark-card border border-gray-600 rounded-large shadow-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent text-paper" aria-describedby="name-error">
+                                        <p id="name-error" class="hidden text-sm text-red-400 mt-1">Full name is required.</p>
+                                    </div>
+                                    <!-- Phone --><div>
+                                        <label for="phone" class="block text-sm font-medium text-paper">Phone</label>
+                                        <input type="tel" id="phone" name="phone" required class="mt-1 block w-full px-4 py-3 bg-bg-dark-card border border-gray-600 rounded-large shadow-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent text-paper" aria-describedby="phone-error">
+                                        <p id="phone-error" class="hidden text-sm text-red-400 mt-1">A valid phone number is required.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Email --><div data-aos="fade-up" data-aos-delay="200">
+                                    <label for="email" class="block text-sm font-medium text-paper">Email</label>
+                                    <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-3 bg-bg-dark-card border border-gray-600 rounded-large shadow-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent text-paper" aria-describedby="email-error">
+                                    <p id="email-error" class="hidden text-sm text-red-400 mt-1">A valid email address is required.</p>
+                                </div>
+
+                                <!-- Dropoff Checkbox --><div class="relative flex items-start" data-aos="fade-up" data-aos-delay="250">
+                                    <div class="flex h-6 items-center">
+                                        <input id="dropoff-toggle" name="dropoff-toggle" type="checkbox" class="h-4 w-4 rounded border-gray-500 text-accent focus:ring-accent bg-bg-dark-card">
+                                    </div>
+                                    <div class="ml-3 text-sm leading-6">
+                                        <label for="dropoff-toggle" class="font-medium text-paper">I will drop off/pick up at the shop</label>
+                                        <p class="text-paper/70">Check this box if you plan to visit us in person.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Pickup Address --><div id="pickup-address-group" data-aos="fade-up" data-aos-delay="300">
+                                    <label for="address" class="block text-sm font-medium text-paper">Pickup Address</label>
+                                    <textarea id="address" name="address" rows="3" required class="mt-1 block w-full px-4 py-3 bg-bg-dark-card border border-gray-600 rounded-large shadow-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent text-paper" aria-describedby="address-error"></textarea>
+                                    <p id="address-error" class="hidden text-sm text-red-400 mt-1">Pickup address is required.</p>
+                                </div>
+
+                                <!-- Service Type --><div data-aos="fade-up" data-aos-delay="350">
+                                    <label for="service-type" class="block text-sm font-medium text-paper">Service Type</label>
+                                    <select id="service-type" name="service-type" required class="mt-1 block w-full px-4 py-3 bg-bg-dark-card border border-gray-600 rounded-large shadow-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent text-paper" aria-describedby="service-error">
+                                        <option value="">Select a service...</option>
+                                        <option value="Dry Cleaning">Dry Cleaning</option>
+                                        <option value="Wash & Iron">Wash & Iron</option>
+                                        <option value="Carpets & Rugs">Carpets & Rugs</option>
+                                        <option value="Blankets & Quilts">Blankets & Quilts</option>
+                                        <option value="Sofa Cleaning">Sofa Cleaning</option>
+                                        <option value="Curtain Cleaning">Curtain Cleaning</option>
+                                        <option value="Bridal Wear">Bridal Wear</option>
+                                    </select>
+                                    <p id="service-error" class="hidden text-sm text-red-400 mt-1">Please select a service type.</p>
+                                </div>
+
+                                <!-- Calendar Pickers --><div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up" data-aos-delay="400">
+                                    <!-- Pickup Date/Time --><div id="pickup-calendar-group">
+                                        <h3 class="font-serif text-xl font-bold text-paper">Select Pickup Date & Time</h3>
+                                        <p id="pickup-date-error" class="hidden text-sm text-red-400 mt-1">Please select a pickup date and time.</p>
+                                        <div id="calendar-pickup" class="mt-4">
+                                            <!-- Calendar widget will be injected here --></div>
+                                        <div id="time-slots-pickup" class="mt-4">
+                                            <!-- Time slots will be injected here --></div>
+                                        <input type="hidden" id="pickup-datetime" name="pickup-datetime" required>
+                                    </div>
+                                    <!-- Delivery Date/Time --><div id="delivery-calendar-group">
+                                        <h3 class="font-serif text-xl font-bold text-paper">Select Delivery Date & Time</h3>
+                                        <p id="delivery-date-error" class="hidden text-sm text-red-400 mt-1">Please select a delivery date and time.</p>
+                                        <div id="calendar-delivery" class="mt-4">
+                                            <!-- Calendar widget will be injected here --></div>
+                                        <div id="time-slots-delivery" class="mt-4">
+                                            <!-- Time slots will be injected here --></div>
+                                        <input type="hidden" id="delivery-datetime" name="delivery-datetime" required>
+                                    </div>
+                                </div>
+                                
+                                <!-- Special Instructions --><div data-aos="fade-up" data-aos-delay="0">
+                                    <label for="instructions" class="block text-sm font-medium text-paper">Special Instructions (Optional)</label>
+                                    <textarea id="instructions" name="instructions" rows="3" class="mt-1 block w-full px-4 py-3 bg-bg-dark-card border border-gray-600 rounded-large shadow-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent text-paper" placeholder="e.g., 'Ring doorbell for pickup', 'Stain on left sleeve of blue shirt'"></textarea>
+                                </div>
+
+                                <!-- Submit Button --><div data-aos="fade-up" data-aos-delay="0">
+                                    <button type="submit" id="form-submit-btn" class="w-full bg-accent text-white px-8 py-4 rounded-large text-lg font-medium shadow-subtle hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200 ease-out">
+                                        Request Pickup
+                                    </button>
+                                </div>
+                            </form>
+
+                            <!-- Right Column: Map & Details --><aside class="lg:col-span-1 space-y-8">
+                                <div class="bg-bg-dark-section p-8 rounded-xlarge shadow-subtle" data-aos="fade-up" data-aos-delay="100">
+                                    <h2 class="font-serif text-3xl font-bold text-paper">Visit Our Shop</h2>
+                                    <div class="mt-6 aspect-w-4 aspect-h-3 rounded-large overflow-hidden">
+                                        <!-- Embedded Google Map --><iframe 
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3428.169123615367!2d76.65977877626219!3d30.7701643821034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ffbde3624f11b%3A0x6b22b6d70001a39d!2sQuick%20Shine%20Drycleaners!5e0!3m2!1sen!2sin!4v1730510515124!5m2!1sen!2sin" 
+                                            width="100%" 
+                                            height="300" 
+                                            style="border:0;" 
+                                            allowfullscreen="" 
+                                            loading="lazy" 
+                                            referrerpolicy="no-referrer-when-downgrade"
+                                            title="Shop Location Map">
+                                        </iframe>
+                                    </div>
+                                    <div class="mt-6">
+                                        <h3 class="text-lg font-medium text-paper">Quickshine Dry Cleaners</h3>
+                                        <p class="mt-2 text-paper/80">
+                                            Shop No. 1, Market, Greenwood Residency St, opp. JaSiavu towers, Sector 125, Sunny Enclave, Kharar, Punjab 140301
+                                        </p>
+                                        <!-- FIXED "Get Directions" Link --><a href="https://www.google.com/maps/search/?api=1&query=Quickshine%20Dry%20Cleaners%2C%20Shop%20No.%201%2C%20Market%2C%20Greenwood%20Residency%20St%2C%20opp.%20JaSiavu%20towers%2C%20Sector%20125%2C%20Sunny%20Enclave%2C%20Kharar%2C%20Punjab%20140301" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 font-medium text-accent hover:text-accent/80 transition-colors">
+                                            Get Directions &raquo;
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="bg-bg-dark-section p-8 rounded-xlarge shadow-subtle" data-aos="fade-up" data-aos-delay="200">
+                                    <h3 class="font-serif text-2xl font-bold text-paper">Shop Hours</h3>
+                                    <ul class="mt-4 space-y-2 text-paper/80">
+                                        <li class="flex justify-between"><span>Sunday - Saturday</span> <span>10:00 AM - 9:00 PM</span></li>
+                                    </ul>
+                                    <h3 class="font-serif text-2xl font-bold text-paper mt-6">Contact Us</h3>
+                                    <ul class="mt-4 space-y-2 text-paper/80">
+                                        <li class="flex items-center">
+                                            <i data-lucide="phone" class="w-5 h-5 mr-3 text-accent"></i>
+                                            <a href="tel:07710107090" class="hover:text-accent">077101 07090</a>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i data-lucide="mail" class="w-5 h-5 mr-3 text-accent"></i>
+                                            <a href="mailto:quickshinedrycleaners@gmail.com" class="hover:text-accent break-all">quickshinedrycleaners@gmail.com</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </aside>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Booking Confirmation Modal (Hidden by default) --><div id="booking-modal" class="hidden fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+                <div class="bg-bg-dark-card rounded-xlarge shadow-2xl p-8 max-w-lg w-full">
+                    <div class="flex justify-between items-center">
+                        <h2 id="modal-title" class="font-serif text-2xl font-bold text-paper">Confirm Your Booking</h2>
+                        <button id="modal-close" class="text-paper/50 hover:text-paper" aria-label="Close modal">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    <div id="modal-summary" class="mt-6 space-y-3 text-paper/90">
+                        <!-- Summary will be injected here --></div>
+                    <div class="mt-8 flex justify-end space-x-4">
+                        <button id="modal-cancel" class="bg-transparent border border-gray-600 text-paper px-6 py-3 rounded-large text-sm font-medium hover:bg-bg-dark-section transition-all duration-200">
+                            Cancel
+                        </button>
+                        <button id="modal-confirm" class="bg-accent text-white px-6 py-3 rounded-large text-sm font-medium shadow-subtle hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200">
+                            Confirm Booking
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- ===== FOOTER ===== --><footer class="bg-primary text-paper/70">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                    <!-- Column 1: Logo & Social --><div class="md:col-span-2">
+                        <h3 class="font-serif text-2xl font-bold text-white">Quickshine Dry Cleaners</h3>
+                        <p class="mt-4 text-sm max-w-md">Your partner in premium garment care. We combine expert techniques with eco-friendly practices to deliver unmatched results.</p>
+                        <div class="mt-6 flex space-x-4">
+                            <!-- ADDED SOCIAL LINKS --><a href="https://m.facebook.com/61564640444302/" target="_blank" rel="noopener noreferrer" class="text-paper/70 hover:text-white" aria-label="Facebook"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                            <a href="https://www.instagram.com/quick_shine_drycleaners?igsh=MTNiaGxtcjVqM2hjOA==" target="_blank" rel="noopener noreferrer" class="text-paper/70 hover:text-white" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Quick Links --><div>
+                        <h4 class="font-bold text-white tracking-wide">Quick Links</h4>
+                        <ul class="mt-4 space-y-3 text-sm">
+                            <li><a href="#" class="hover:text-white nav-link" data-page="home">Home</a></li>
+                            <li><a href="#services" class="hover:text-white nav-link-internal">Services</a></li>
+                            <li><a href="#about" class="hover:text-white nav-link-internal">About Us</a></li>
+                            <li><a href="#" class="hover:text-white nav-link" data-page="booking">Book Pickup</a></li>
+                            <li><a href="#testimonials" class="hover:text-white nav-link-internal">Testimonials</a></li>
+                            <li><a href="#" class="hover:text-white nav-link" data-page="booking">Contact / Location</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: Contact & Hours --><div>
+                        <h4 class="font-bold text-white tracking-wide">Business Hours</h4>
+                        <ul class="mt-4 space-y-3 text-sm">
+                            <li>Sun - Sat: 10:00 AM - 9:00 PM</li>
+                        </ul>
+                        <h4 class="font-bold text-white tracking-wide mt-6">Get In Touch</h4>
+                        <ul class="mt-4 space-y-3 text-sm">
+                            <li class="flex items-start">
+                                <i data-lucide="map-pin" class="w-5 h-5 mr-3 flex-shrink-0 mt-0.5"></i>
+                                <span>Shop No. 1, Market, Greenwood Residency St, opp. JaSiavu towers, Sector 125, Sunny Enclave, Kharar, Punjab 140301</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i data-lucide="phone" class="w-5 h-5 mr-3 flex-shrink-0"></i>
+                                <a href="tel:07710107090" class="hover:text-white">077101 07090</a>
+                            </li>
+                            <li class="flex items-center">
+                                <i data-lucide="mail" class="w-5 h-5 mr-3 flex-shrink-0"></i>
+                                <a href="mailto:quickshinedrycleaners@gmail.com" class="hover:text-white break-all">quickshinedrycleaners@gmail.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Copyright Bar --><div class="mt-12 pt-8 border-t border-paper/10 text-sm flex flex-col sm:flex-row justify-between items-center">
+                    <p>&copy; <span id="current-year"></span> Quickshine Dry Cleaners. All rights reserved.</p>
+                    <a href="#" class="hover:text-white mt-4 sm:mt-0">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== --><script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Lucide Icons ---
+            lucide.createIcons();
+
+            // --- Animate on Scroll (AOS) Init ---
+            AOS.init({
+                duration: 800,   // "Stronger" animation
+                once: false,       // Re-animate on scroll
+                mirror: true,      // Animate elements out as you scroll past them
+                offset: 120,       // Trigger a bit later
+                easing: 'ease-out-cubic',
+            });
+
+            // --- Sticky Header ---
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // --- Mobile Nav Toggle ---
+            const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+            const mobileNavMenu = document.getElementById('mobile-nav-menu');
+            const mobileNavIcon = mobileNavToggle.querySelector('i');
+            
+            mobileNavToggle.addEventListener('click', () => {
+                const isExpanded = mobileNavToggle.getAttribute('aria-expanded') === 'true';
+                mobileNavToggle.setAttribute('aria-expanded', !isExpanded);
+                mobileNavMenu.classList.toggle('hidden');
+                
+                // Toggle icon
+                mobileNavIcon.setAttribute('data-lucide', isExpanded ? 'menu' : 'x');
+                lucide.createIcons();
+            });
+
+            // --- Testimonial Carousel ---
+            const carousel = document.getElementById('testimonial-carousel');
+            if (carousel) { // Check if carousel exists before adding listeners
+                const items = carousel.querySelectorAll('.testimonial-item');
+                let currentTestimonial = 0;
+                let testimonialInterval;
+
+                function showTestimonial(index) {
+                    items.forEach((item, i) => {
+                        item.classList.add('hidden');
+                        if (i === index) {
+                            item.classList.remove('hidden');
+                        }
+                    });
+                }
+
+                function nextTestimonial() {
+                    currentTestimonial = (currentTestimonial + 1) % items.length;
+                    showTestimonial(currentTestimonial);
+                }
+                
+                function startCarousel() {
+                    testimonialInterval = setInterval(nextTestimonial, 5000); // 5 seconds
+                }
+                
+                function stopCarousel() {
+                    clearInterval(testimonialInterval);
+                }
+                
+                if(items.length > 1) { // Only start carousel if there is more than 1 item
+                    startCarousel(); // Start it
+                    carousel.addEventListener('mouseenter', stopCarousel);
+                    carousel.addEventListener('mouseleave', startCarousel);
+                }
+            }
+            
+            // --- About Us Carousel ---
+            const aboutCarousel = document.getElementById('about-carousel');
+            if (aboutCarousel) {
+                const track = aboutCarousel.querySelector('.about-carousel-track');
+                const slides = Array.from(track.children);
+                const nextButton = document.getElementById('about-next');
+                const prevButton = document.getElementById('about-prev');
+                const dotsContainer = document.getElementById('about-dots');
+                let currentSlide = 0;
+                let autoPlayInterval;
+
+                // Create dots
+                slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.classList.add('about-carousel-dot', 'w-3', 'h-3', 'rounded-full', 'bg-paper/50', 'transition-all', 'duration-300');
+                    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        moveToSlide(i);
+                        resetAutoPlay();
+                    });
+                    dotsContainer.appendChild(dot);
+                });
+
+                const dots = Array.from(dotsContainer.children);
+
+                const moveToSlide = (slideIndex) => {
+                    track.style.transform = `translateX(-${slideIndex * 100}%)`;
+                    currentSlide = slideIndex;
+                    
+                    // Update dots
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === currentSlide);
+                    });
+                };
+
+                const nextSlide = () => {
+                    const newIndex = (currentSlide + 1) % slides.length;
+                    moveToSlide(newIndex);
+                };
+                
+                const prevSlide = () => {
+                    const newIndex = (currentSlide - 1 + slides.length) % slides.length;
+                    moveToSlide(newIndex);
+                };
+
+                const startAutoPlay = () => {
+                    // CHANGED FROM 5000 to 2500
+                    autoPlayInterval = setInterval(nextSlide, 2500); // 2.5 seconds
+                };
+
+                const stopAutoPlay = () => {
+                    clearInterval(autoPlayInterval);
+                };
+
+                const resetAutoPlay = () => {
+                    stopAutoPlay();
+                    startAutoPlay();
+                };
+
+                // Add event listeners
+                nextButton.addEventListener('click', () => {
+                    nextSlide();
+                    resetAutoPlay();
+                });
+                
+                prevButton.addEventListener('click', () => {
+                    prevSlide();
+                    resetAutoPlay();
+                });
+                
+                aboutCarousel.addEventListener('mouseenter', stopAutoPlay);
+                aboutCarousel.addEventListener('mouseleave', startAutoPlay);
+
+                // Initialize
+                moveToSlide(0);
+                startAutoPlay();
+            }
+
+
+            // --- Page Navigation ---
+            const pages = {
+                'home': document.getElementById('home-page'),
+                'booking': document.getElementById('booking-page')
+            };
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            function showPage(pageId) {
+                Object.values(pages).forEach(page => {
+                    if(page) page.classList.add('hidden');
+                });
+                if (pages[pageId]) {
+                    pages[pageId].classList.remove('hidden');
+                    window.scrollTo(0, 0); // Scroll to top
+                    // Re-run AOS for the new page
+                    AOS.refresh();
+                }
+                
+                // Close mobile menu on navigation
+                if (mobileNavToggle && mobileNavMenu && mobileNavIcon) {
+                    mobileNavToggle.setAttribute('aria-expanded', 'false');
+                    mobileNavMenu.classList.add('hidden');
+                    mobileNavIcon.setAttribute('data-lucide', 'menu');
+                    lucide.createIcons();
+                }
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = link.getAttribute('data-page');
+                    if (pageId) {
+                        showPage(pageId);
+                    }
+                });
+            });
+            
+            // Handle internal anchor links (like #services)
+            document.querySelectorAll('.nav-link-internal').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Ensure home page is visible if navigating to a home-page section
+                        if (pages.home && pages.home.classList.contains('hidden')) {
+                            showPage('home');
+                        }
+                        
+                        // Wait for page to be visible, then scroll
+                        setTimeout(() => {
+                            const headerOffset = header ? header.offsetHeight : 70; // Fallback height
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20; // 20px buffer
+      
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: "smooth"
+                            });
+                        }, 100); // Small delay to ensure correct layout
+                    }
+                    
+                    // Close mobile menu
+                    if (mobileNavToggle && mobileNavMenu && mobileNavIcon) {
+                        mobileNavToggle.setAttribute('aria-expanded', 'false');
+                        mobileNavMenu.classList.add('hidden');
+                        mobileNavIcon.setAttribute('data-lucide', 'menu');
+                        lucide.createIcons();
+                    }
+                });
+            });
+
+            // --- Footer Current Year ---
+            const currentYearEl = document.getElementById('current-year');
+            if (currentYearEl) {
+                currentYearEl.textContent = new Date().getFullYear();
+            }
+
+            // --- Booking Form & Calendar Logic ---
+            const bookingForm = document.getElementById('booking-form');
+            const dropoffToggle = document.getElementById('dropoff-toggle');
+            const pickupAddressGroup = document.getElementById('pickup-address-group');
+            const pickupCalendarGroup = document.getElementById('pickup-calendar-group');
+            const deliveryCalendarGroup = document.getElementById('delivery-calendar-group');
+            
+            const pickupCalendarEl = document.getElementById('calendar-pickup');
+            const pickupTimesEl = document.getElementById('time-slots-pickup');
+            const deliveryCalendarEl = document.getElementById('calendar-delivery');
+            const deliveryTimesEl = document.getElementById('time-slots-delivery');
+            
+            const formInputs = {
+                name: document.getElementById('name'),
+                phone: document.getElementById('phone'),
+                email: document.getElementById('email'),
+                address: document.getElementById('address'),
+                service: document.getElementById('service-type'),
+                pickup: document.getElementById('pickup-datetime'),
+                delivery: document.getElementById('delivery-datetime')
+            };
+            
+            const formErrors = {
+                name: document.getElementById('name-error'),
+                phone: document.getElementById('phone-error'),
+                email: document.getElementById('email-error'),
+                address: document.getElementById('address-error'),
+                service: document.getElementById('service-error'),
+                pickup: document.getElementById('pickup-date-error'),
+                delivery: document.getElementById('delivery-date-error')
+            };
+            
+            const formSuccessMsg = document.getElementById('form-success');
+            const formErrorMsg = document.getElementById('form-error');
+
+            const modal = document.getElementById('booking-modal');
+            const modalSummary = document.getElementById('modal-summary');
+            const modalClose = document.getElementById('modal-close');
+            const modalCancel = document.getElementById('modal-cancel');
+            const modalConfirm = document.getElementById('modal-confirm');
+            const formSubmitBtn = document.getElementById('form-submit-btn'); 
+
+            let selectedPickupDate = null;
+            let selectedDeliveryDate = null;
+            let currentPickupYear = new Date().getFullYear();
+            let currentPickupMonth = new Date().getMonth();
+            let currentDeliveryYear = new Date().getFullYear();
+            let currentDeliveryMonth = new Date().getMonth();
+            
+            // --- Configurable Settings ---
+            const MIN_PICKUP_LEAD_TIME_HOURS = 24;
+            const MIN_DELIVERY_LEAD_TIME_HOURS = 48; // Min 48h after pickup
+            const BUSINESS_HOURS = [
+                "10:00", "11:00", "12:00",
+                "13:00", "14:00", "15:00", "16:00", "17:00",
+                "18:00", "19:00", "20:00" 
+            ];
+            
+            // --- Mock Booked Data ---
+            // In a real app, this would come from an API
+            const MOCK_BOOKED_SLOTS = [
+                { "date": "2025-11-05", "slots": ["10:00", "14:00"] },
+                { "date": "2025-11-06", "slots": ["10:00", "11:00", "15:00"] },
+                { "date": "2025-11-10", "slots": ["all"] } // Fully booked
+            ];
+
+            const getBookedSlots = (isoDate) => {
+                const booking = MOCK_BOOKED_SLOTS.find(d => d.date === isoDate);
+                return booking ? booking.slots : [];
+            };
+
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            
+            const createCalendar = (container, year, month, type) => {
+                if (!container) return; // Exit if element doesn't exist
+                container.innerHTML = '';
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                const now = new Date();
+                
+                // Set lead time based on type
+                let leadTime;
+                if (type === 'pickup') {
+                    leadTime = new Date(now.getTime() + MIN_PICKUP_LEAD_TIME_HOURS * 60 * 60 * 1000);
+                } else {
+                    // Delivery must be after pickup
+                    leadTime = selectedPickupDate 
+                        ? new Date(new Date(selectedPickupDate).getTime() + MIN_DELIVERY_LEAD_TIME_HOURS * 60 * 60 * 1000)
+                        : new Date(now.getTime() + (MIN_PICKUP_LEAD_TIME_HOURS + MIN_DELIVERY_LEAD_TIME_HOURS) * 60 * 60 * 1000);
+                }
+
+                // Header
+                const header = document.createElement('div');
+                header.className = 'flex justify-between items-center mb-4';
+                header.innerHTML = `
+                    <button type="button" class="prev-month p-2 rounded-full hover:bg-bg-dark-section" aria-label="Previous month"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+                    <h4 class="font-bold text-lg text-paper">${monthNames[month]} ${year}</h4>
+                    <button type="button" class="next-month p-2 rounded-full hover:bg-bg-dark-section" aria-label="Next month"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+                `;
+                container.appendChild(header);
+
+                // Day Grid
+                const grid = document.createElement('div');
+                grid.className = 'calendar-grid';
+                
+                // Day headers
+                ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].forEach(day => {
+                    grid.innerHTML += `<div class="font-medium text-xs text-paper/50">${day}</div>`;
+                });
+                
+                // Empty cells for first day
+                for (let i = 0; i < firstDay; i++) {
+                    grid.innerHTML += '<div></div>';
+                }
+                
+                // Day cells
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const date = new Date(year, month, day, 23, 59, 59); // Check against end of day
+                    const isoDate = date.toISOString().split('T')[0];
+                    const bookedSlots = getBookedSlots(isoDate);
+                    
+                    const isDisabled = date < leadTime;
+                    const isBooked = bookedSlots.includes('all');
+                    
+                    const selectedDate = (type === 'pickup') ? selectedPickupDate : selectedDeliveryDate;
+                    const isSelected = selectedDate && selectedDate.startsWith(isoDate);
+
+                    let classes = 'p-2 rounded-full cursor-pointer';
+                    if (isDisabled || isBooked) {
+                        classes = 'p-2 rounded-full text-gray-600 line-through cursor-not-allowed';
+                    } else if (isSelected) {
+                        classes = 'p-2 rounded-full bg-accent text-white font-bold';
+                    } else {
+                        classes = 'p-2 rounded-full hover:bg-bg-dark-section';
+                    }
+                    
+                    grid.innerHTML += `<button type="button" data-date="${isoDate}" class="${classes}" ${isDisabled || isBooked ? 'disabled' : ''}>${day}</button>`;
+                }
+                container.appendChild(grid);
+                
+                // Add event listeners
+                container.querySelector('.prev-month').addEventListener('click', () => {
+                    if (type === 'pickup') {
+                        currentPickupMonth--;
+                        if (currentPickupMonth < 0) {
+                            currentPickupMonth = 11;
+                            currentPickupYear--;
+                        }
+                        createCalendar(container, currentPickupYear, currentPickupMonth, type);
+                    } else {
+                        currentDeliveryMonth--;
+                        if (currentDeliveryMonth < 0) {
+                            currentDeliveryMonth = 11;
+                            currentDeliveryYear--;
+                        }
+                        createCalendar(container, currentDeliveryYear, currentDeliveryMonth, type);
+                    }
+                });
+
+                container.querySelector('.next-month').addEventListener('click', () => {
+                    if (type === 'pickup') {
+                        currentPickupMonth++;
+                        if (currentPickupMonth > 11) {
+                            currentPickupMonth = 0;
+                            currentPickupYear++;
+                        }
+                        createCalendar(container, currentPickupYear, currentPickupMonth, type);
+                    } else {
+                        currentDeliveryMonth++;
+                        if (currentDeliveryMonth > 11) {
+                            currentDeliveryMonth = 0;
+                            currentDeliveryYear++;
+                        }
+                        createCalendar(container, currentDeliveryYear, currentDeliveryMonth, type);
+                    }
+                });
+
+                container.querySelectorAll('button[data-date]').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const isoDate = button.getAttribute('data-date');
+                        if (type === 'pickup') {
+                            selectedPickupDate = isoDate; // Just the date for now
+                            createTimeSlots(pickupTimesEl, isoDate, 'pickup');
+                            // Reset delivery date if it's no longer valid
+                            if (selectedDeliveryDate && new Date(selectedDeliveryDate) < new Date(new Date(isoDate).getTime() + MIN_DELIVERY_LEAD_TIME_HOURS * 60 * 60 * 1000)) {
+                                selectedDeliveryDate = null;
+                                if (formInputs.delivery) formInputs.delivery.value = '';
+                                if (deliveryTimesEl) deliveryTimesEl.innerHTML = '<p class="text-sm text-paper/70">Select a date to see available times.</p>';
+                            }
+                            createCalendar(deliveryCalendarEl, currentDeliveryYear, currentDeliveryMonth, 'delivery');
+                        } else {
+                            selectedDeliveryDate = isoDate; // Just the date for now
+                            createTimeSlots(deliveryTimesEl, isoDate, 'delivery');
+                        }
+                        // Re-render this calendar to show selection
+                        createCalendar(container, year, month, type);
+                    });
+                });
+                
+                lucide.createIcons(); // Re-render icons
+            };
+            
+            const createTimeSlots = (container, isoDate, type) => {
+                if (!container) return; // Exit if element doesn't exist
+                const booked = getBookedSlots(isoDate);
+                container.innerHTML = ''; // Clear
+                
+                let hasSlots = false;
+                const grid = document.createElement('div');
+                grid.className = 'time-slot-grid';
+                
+                const now = new Date();
+                const leadTime = (type === 'pickup')
+                    ? new Date(now.getTime() + MIN_PICKUP_LEAD_TIME_HOURS * 60 * 60 * 1000)
+                    : new Date(new Date(selectedPickupDate).getTime() + MIN_DELIVERY_LEAD_TIME_HOURS * 60 * 60 * 1000);
+                
+                BUSINESS_HOURS.forEach(time => {
+                    const [hour, minute] = time.split(':');
+                    const slotDateTime = new Date(isoDate);
+                    slotDateTime.setHours(hour, minute, 0, 0);
+
+                    const isDisabled = booked.includes(time) || slotDateTime < leadTime;
+                    
+                    if (!isDisabled) {
+                        hasSlots = true;
+                    }
+                    
+                    const selectedDate = (type === 'pickup') ? selectedPickupDate : selectedDeliveryDate;
+                    const isSelected = selectedDate === slotDateTime.toISOString();
+
+                    let classes = 'p-3 rounded-large border text-sm font-medium transition-colors duration-150';
+                    if (isDisabled) {
+                        classes += ' bg-gray-700 text-gray-500 line-through cursor-not-allowed border-gray-700';
+                    } else if (isSelected) {
+                        classes += ' bg-accent text-white border-accent';
+                    } else {
+                        classes += ' bg-bg-dark-card border-gray-600 hover:border-accent hover:bg-accent/10 cursor-pointer';
+                    }
+                    
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = classes;
+                    button.textContent = time;
+                    button.disabled = isDisabled;
+                    
+                    if (!isDisabled) {
+                        button.addEventListener('click', () => {
+                            const fullISO = slotDateTime.toISOString();
+                            if (type === 'pickup') {
+                                selectedPickupDate = fullISO;
+                                if (formInputs.pickup) formInputs.pickup.value = fullISO;
+                                if (formErrors.pickup) formErrors.pickup.classList.add('hidden'); // Hide error
+                                // Re-render delivery calendar with new lead time
+                                createCalendar(deliveryCalendarEl, currentDeliveryYear, currentDeliveryMonth, 'delivery');
+                            } else {
+                                selectedDeliveryDate = fullISO;
+                                if (formInputs.delivery) formInputs.delivery.value = fullISO;
+                                if (formErrors.delivery) formErrors.delivery.classList.add('hidden'); // Hide error
+                            }
+                            // Re-render time slots to show selection
+                            createTimeSlots(container, isoDate, type);
+                        });
+                    }
+                    grid.appendChild(button);
+                });
+                
+                if (!hasSlots) {
+                    container.innerHTML = '<p class="text-sm text-red-400 p-3 bg-red-900/50 rounded-large">No available slots for this day.</p>';
+                } else {
+                    container.appendChild(grid);
+                }
+            };
+
+            // -- Initialize Calendars --
+            createCalendar(pickupCalendarEl, currentPickupYear, currentPickupMonth, 'pickup');
+            createCalendar(deliveryCalendarEl, currentDeliveryYear, currentDeliveryMonth, 'delivery');
+            if (pickupTimesEl) pickupTimesEl.innerHTML = '<p class="text-sm text-paper/70">Select a date to see available times.</p>';
+            if (deliveryTimesEl) deliveryTimesEl.innerHTML = '<p class="text-sm text-paper/7To">Select a date to see available times.</p>';
+            
+            // -- Form Validation --
+            const validateField = (field, errorEl) => {
+                if (!field || !errorEl) return true; // Element doesn't exist
+                
+                let isValid = field.checkValidity();
+                
+                // Specific checks
+                if (field.type === 'email' && field.value) {
+                    isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value);
+                }
+                if (field.type === 'tel' && field.value) {
+                    isValid = /^[0-9\s\-()+]{7,}$/.test(field.value); // Simple phone validation
+                }
+                
+                if (isValid) {
+                    errorEl.classList.add('hidden');
+                    field.classList.remove('border-red-500');
+                } else {
+                    errorEl.classList.remove('hidden');
+                    field.classList.add('border-red-500');
+                }
+                return isValid;
+            };
+
+            const validateForm = (isDropoff) => {
+                let isValid = true;
+                isValid = validateField(formInputs.name, formErrors.name) && isValid;
+                isValid = validateField(formInputs.phone, formErrors.phone) && isValid;
+                isValid = validateField(formInputs.email, formErrors.email) && isValid;
+                isValid = validateField(formInputs.service, formErrors.service) && isValid;
+                
+                if (!isDropoff) {
+                    isValid = validateField(formInputs.address, formErrors.address) && isValid;
+                    isValid = validateField(formInputs.pickup, formErrors.pickup) && isValid;
+                    isValid = validateField(formInputs.delivery, formErrors.delivery) && isValid;
+                }
+                
+                return isValid;
+            };
+
+            // -- Dropoff Toggle Logic --
+            if (dropoffToggle) {
+                dropoffToggle.addEventListener('change', () => {
+                    const isDropoff = dropoffToggle.checked;
+                    if (isDropoff) {
+                        if (pickupAddressGroup) pickupAddressGroup.classList.add('hidden');
+                        if (pickupCalendarGroup) pickupCalendarGroup.classList.add('hidden');
+                        if (deliveryCalendarGroup) deliveryCalendarGroup.classList.add('hidden');
+                        if (formSubmitBtn) formSubmitBtn.textContent = 'Submit Request'; 
+                        // Clear required state and values
+                        if (formInputs.address) formInputs.address.required = false;
+                        if (formInputs.pickup) formInputs.pickup.required = false;
+                        if (formInputs.delivery) formInputs.delivery.required = false;
+                        if (formInputs.address) formInputs.address.value = '';
+                        if (formInputs.pickup) formInputs.pickup.value = '';
+                        if (formInputs.delivery) formInputs.delivery.value = '';
+                        if (formErrors.address) formErrors.address.classList.add('hidden');
+                        if (formErrors.pickup) formErrors.pickup.classList.add('hidden');
+                        if (formErrors.delivery) formErrors.delivery.classList.add('hidden');
+                    } else {
+                        if (pickupAddressGroup) pickupAddressGroup.classList.remove('hidden');
+                        if (pickupCalendarGroup) pickupCalendarGroup.classList.remove('hidden');
+                        if (deliveryCalendarGroup) deliveryCalendarGroup.classList.remove('hidden');
+                        if (formSubmitBtn) formSubmitBtn.textContent = 'Request Pickup'; 
+                        // Restore required state
+                        if (formInputs.address) formInputs.address.required = true;
+                        if (formInputs.pickup) formInputs.pickup.required = true;
+                        if (formInputs.delivery) formInputs.delivery.required = true;
+                    }
+                    
+                    // --- THIS IS THE FIX ---
+                    // Wait a tiny moment for the layout to update, then refresh AOS
+                    setTimeout(() => {
+                        AOS.refresh();
+                    }, 50); // 50ms is usually enough
+                });
+            }
+
+            // -- Form Submission --
+            if (bookingForm) {
+                bookingForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (formSuccessMsg) formSuccessMsg.classList.add('hidden');
+                    if (formErrorMsg) formErrorMsg.classList.add('hidden');
+                    
+                    const isDropoff = dropoffToggle ? dropoffToggle.checked : false;
+                    
+                    if (validateForm(isDropoff)) {
+                        // Show confirmation modal
+                        const formData = new FormData(bookingForm);
+                        const pickupTime = new Date(formData.get('pickup-datetime'));
+                        const deliveryTime = new Date(formData.get('delivery-datetime'));
+                        
+                        const summary = `
+                            <p><strong>Name:</strong> ${formData.get('name')}</p>
+                            <p><strong>Phone:</strong> ${formData.get('phone')}</p>
+                            <p><strong>Email:</strong> ${formData.get('email')}</p>
+                            <p><strong>Service:</strong> ${formData.get('service-type')}</p>
+                            ${isDropoff
+                                ? '<p><strong>Type:</strong> In-Store Dropoff / Pickup</p>'
+                                : `
+                                <p><strong>Pickup Address:</strong> ${formData.get('address')}</p>
+                                <p><strong>Pickup Time:</strong> ${pickupTime.toLocaleString()}</p>
+                                <p><strong>Delivery Time:</strong> ${deliveryTime.toLocaleString()}</p>
+                                `
+                            }
+                            <p><strong>Notes:</strong> ${formData.get('instructions') || 'None'}</p>
+                        `;
+                        if (modalSummary) modalSummary.innerHTML = summary;
+                        if (modal) modal.classList.remove('hidden');
+                    } else {
+                        if (formErrorMsg) formErrorMsg.classList.remove('hidden');
+                        window.scrollTo(0, bookingForm.offsetTop);
+                    }
+                });
+            }
+
+            // -- Modal Controls --
+            const closeModal = () => {
+                if (modal) modal.classList.add('hidden');
+            };
+            if (modalClose) modalClose.addEventListener('click', closeModal);
+            if (modalCancel) modalCancel.addEventListener('click', closeModal);
+            
+            if (modalConfirm) {
+                modalConfirm.addEventListener('click', () => {
+                    // This is where you would POST to your API
+                    // e.g., fetch('/api/bookings', { method: 'POST', body: ... })
+                    
+                    const formData = new FormData(bookingForm);
+                    console.log('--- Booking Confirmed ---');
+                    console.log('In-Store Dropoff:', dropoffToggle ? dropoffToggle.checked : 'N/A');
+                    for (let [key, value] of formData.entries()) {
+                        console.log(`${key}: ${value}`);
+                    }
+                    console.log('-------------------------');
+
+                    // Simulate success
+                    closeModal();
+                    
+                    // --- Mock API Call (Simulated) ---
+                    // We just show success message and reset
+                    setTimeout(() => {
+                        if (Math.random() > 0.1) { // 90% success rate
+                            console.log('Simulated booking success:', formData);
+                            
+                            if (formSuccessMsg) formSuccessMsg.classList.remove('hidden');
+                            if (bookingForm) bookingForm.reset();
+                            // Reset calendars and times
+                            selectedPickupDate = null;
+                            selectedDeliveryDate = null;
+                            createCalendar(pickupCalendarEl, currentPickupYear, currentPickupMonth, 'pickup');
+                            createCalendar(deliveryCalendarEl, currentDeliveryYear, currentDeliveryMonth, 'delivery');
+                            if (pickupTimesEl) pickupTimesEl.innerHTML = '<p class="text-sm text-paper/70">Select a date to see available times.</p>';
+                            if (deliveryTimesEl) deliveryTimesEl.innerHTML = '<p class="text-sm text-paper/70">Select a date to see available times.</p>';
+                            
+                            if (formSuccessMsg) window.scrollTo(0, formSuccessMsg.offsetTop - 100);
+                            
+                            // Reset dropoff toggle
+                            if (dropoffToggle) dropoffToggle.checked = false;
+                            if (pickupAddressGroup) pickupAddressGroup.classList.remove('hidden');
+                            if (pickupCalendarGroup) pickupCalendarGroup.classList.remove('hidden');
+                            if (deliveryCalendarGroup) deliveryCalendarGroup.classList.remove('hidden');
+                            if (formInputs.address) formInputs.address.required = true;
+                            if (formInputs.pickup) formInputs.pickup.required = true;
+                            if (formInputs.delivery) formInputs.delivery.required = true;
+                            if (formSubmitBtn) formSubmitBtn.textContent = 'Request Pickup'; // <-- RESET TEXT
+
+                        } else {
+                            // Simulate API error
+                            if (formErrorMsg) {
+                                formErrorMsg.textContent = 'A server error occurred. Please try again later or call us.';
+                                formErrorMsg.classList.remove('hidden');
+                            }
+                            if (bookingForm) window.scrollTo(0, bookingForm.offsetTop);
+                        }
+                    }, 500); // Simulate network delay
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>
